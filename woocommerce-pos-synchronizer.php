@@ -19,55 +19,59 @@ if(!function_exists('wp_get_current_user')) {
 }
  function _activation(){
 	//set default time interval for refresh
-	  add_option('wps_time_interval','120000','','no');
-	  add_option('wps_refresh','yes','','no');
-	}
-	function _deactivation(){
-	   delete_option('wps_time_interval');
-	   delete_option('wps_refresh');
+  add_option('wps_time_interval','120000','','no');
+  add_option('wps_refresh','yes','','no');
+}
+
+ function _deactivation(){
+  delete_option('wps_time_interval');
+  delete_option('wps_refresh');
 	  
-	}
-   register_activation_hook( __FILE__ , '_activation');
-   register_deactivation_hook( __FILE__ , '_deactivation');
+}
+  register_activation_hook( __FILE__ , '_activation');
+  register_deactivation_hook( __FILE__ , '_deactivation');
+  
    WooPOSSync::on_load();
    
    /*
    *  create plugin base class
    */
    class WooPOSSync{
-     private static $instance = null;
+   	
+  private static $instance = null;
 	
-	  public static function instance()
+  public static function instance()
     {
         is_null(self::$instance) && self::$instance = new self;
         return self::$instance;
     }
-	 public static function on_load() {
+    
+  public static function on_load() {
         
         add_action( 'init', array( __CLASS__, 'init' ) );
     }
 	
-	static function init(  ) {
-	  add_action('admin_menu',  array(self::instance(),'add_woopossync_menu'));
-	  add_action( 'admin_enqueue_scripts',  array(self::instance(),'add_woopossync_scripts') );
-	  add_action('wp_ajax_wps_ajax',  array(__CLASS__, 'ajax_request'));
-	  add_action('init',  array(__CLASS__,'iwps_empty_cart'));
+   static function init(  ) {
+	add_action('admin_menu',  array(self::instance(),'add_woopossync_menu'));
+	add_action( 'admin_enqueue_scripts',  array(self::instance(),'add_woopossync_scripts') );
+	add_action('wp_ajax_wps_ajax',  array(__CLASS__, 'ajax_request'));
+	add_action('init',  array(__CLASS__,'iwps_empty_cart'));
 	  //ensure access only for aministrator and shop manager
-	  if(self::get_current_user_role()=='Shop_manager'||self::get_current_user_role()=='Administrator'){
-		include("wps_options.php");
-		include("wps_sale_page.php");   
-	 }
+	if(self::get_current_user_role()=='Shop_manager'||self::get_current_user_role()=='Administrator'){
+	 include("wps_options.php");
+	 include("wps_sale_page.php");   
+      }
     }
 	
-	 /*
+     /*
      * Empty WooCommerce cart if not
      */
      function iwps_empty_cart(){
-	  global $woocommerce;
-	   $woocommerce->cart->empty_cart(); 
-	  }
+	 global $woocommerce;
+	 $woocommerce->cart->empty_cart(); 
+   }
 	//get current userrole
-	public static function get_current_user_role() {
+  public static function get_current_user_role() {
 	  global $wp_roles;
 	  $current_user = wp_get_current_user();
 	  $roles = $current_user->roles;
