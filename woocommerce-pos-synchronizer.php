@@ -1,7 +1,7 @@
 <?php
 /*
 *Plugin Name: Woocommerce-POS-Synchronizer
- * Plugin URI: 
+ * Plugin URI: https://github.com/emoop/Woocommerce-POS-Synchronizer
  * Description: Performs  synchronization  between Woocommerce  and point of sale in real time. Provides proper stock quantity and status when you sell simultaneously in both places.
  * Author: Emil Petrow
  * Author URI: 
