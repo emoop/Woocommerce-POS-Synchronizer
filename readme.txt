@@ -1,4 +1,4 @@
-=== Woocommerce-POS-Synchronizer ===
+=== Woocommerce POS Synchronizer ===
 Contributors: emoop
 Tags: woocommerce-pos-synchronizer,woocommerce,pos,synchronization
 Donate link: https://www.paypal.com/cgi-bin/webscr
