@@ -5,33 +5,44 @@
   $_okk=false;
    $options_array=get_option('text_field-group');
    if($options_array){
+   	
     $_today=$options_array['today_orders_name'];
     $_search=$options_array['search_by_name'];
     $_total=$options_array['total_sum_name'];
+    
   }else{
+  	
     $_today='Today orders';
-	$_search='Search by Sku';
-	$_total='Total sum';
+    $_search='Search by Sku';
+    $_total='Total sum';
   }
  
   $is_isset=false;
   if(isset($_POST['today_orders_name']) ){
+  	
    if($_POST['today_orders_name']!=''){
      $_today= $_POST['today_orders_name'];
      $is_isset=true;
-	}
+    }
+    
    }
+   
    if(isset($_POST['search_by_name'])){
+   	
     if($_POST['search_by_name']!=''){
      $_search=$_POST['search_by_name'];
      $is_isset=true;
-	}
+    }
+    
    }
+   
   if(isset($_POST['total_sum_name'])){
+  	
     if($_POST['total_sum_name']!=''){
      $_total=$_POST['total_sum_name'];
      $is_isset=true;
-	}
+    }
+    
    }
    if($is_isset==true){
      $_ok=update_option('text_field-group',
