@@ -5,7 +5,8 @@
 /*^^^^^^^^^^^^^^^^^^^^^^^^^^ get product functions ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
 if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) )
         return;
- 
+ //using https://gist.github.com/mikejolley/3097073#file-gistfile1-txt
+ //to remove emajls
  function unhook_those_pesky_emails( $email_class ) {
  
 		/**
