@@ -131,21 +131,21 @@ function get_product_by_sku( $sku ) {
 	 */
 	 function wps_get_product($sku){
 	   global $woocommerce;
-      $variations='';
-	  $info=null;
-      $cart_item_key=null;
-      $product=get_product_by_sku($sku);
+           $variations='';
+	   $info=null;
+           $cart_item_key=null;
+           $product=get_product_by_sku($sku);
 	  if($product==null){
 		 /*
 		 * if sku is wrong
 		 */
-		   echo   json_encode(array('msg'=>'wrong'));
+	 echo   json_encode(array('msg'=>'wrong'));
 	}else{
 	  if($product->is_in_stock()==false){
           /*
           * if product no stock,return massage
           */
-		  echo   json_encode(array('msg'=>'hidden'));
+	 echo   json_encode(array('msg'=>'hidden'));
 	    
         }
         elseif($product!=null&&$product->is_in_stock()==true){
@@ -163,18 +163,18 @@ function get_product_by_sku( $sku ) {
           }
         }
 		$tax_label='';
-			   $formatted_amount='';
-			     foreach ( WC()->cart->get_tax_totals() as $code => $tax ){
-				   $tax_label=esc_html( $tax->label );
-				   $formatted_amount=wp_kses_post( $tax->formatted_amount );
-				 }
-			   $info=array(
-			   'cart_item_key'=>$cart_item_key,
-			   	'subtotal'=>wc_price($woocommerce->cart->subtotal_ex_tax),
-				'tax_label'=>$tax_label,
-				'formatted_amount'=>$formatted_amount,
-				'order_total'=> wc_price($woocommerce->cart->subtotal)
-			   );
+		 $formatted_amount='';
+		 foreach ( WC()->cart->get_tax_totals() as $code => $tax ){
+			$tax_label=esc_html( $tax->label );
+			$formatted_amount=wp_kses_post( $tax->formatted_amount );
+			}
+		$info=array(
+		   'cart_item_key'=>$cart_item_key,
+		   'subtotal'=>wc_price($woocommerce->cart->subtotal_ex_tax),
+		   'tax_label'=>$tax_label,
+		   'formatted_amount'=>$formatted_amount,
+		   'order_total'=> wc_price($woocommerce->cart->subtotal)
+		);
         $variations='';
        }elseif($product->product_type=='variable'){
         $variations=get_childs($product->id);
@@ -190,18 +190,13 @@ function get_product_by_sku( $sku ) {
        'sku'=>$product->get_sku(),
        'title'=>$product->post->post->post_title,
        'price'=>$product->get_price(),
-       //'tax'=>$woocommerce->cart->tax_total,
-       //'incl'=>$woocommerce->cart->subtotal,
-       //'excl'=>$woocommerce->cart->subtotal_ex_tax ,
-	   'info'=>$info,
+       'info'=>$info,
        'image'=>$product->get_image(),
        'id'=>$product->id,
        'quantity'=>$quantity,
        'type'=>$product->product_type,
-       //'cpos'=>  get_option( 'woocommerce_currency_pos' ),
-      // 'currency'=>get_woocommerce_currency_symbol(),
-        'cart_item_key'=>$cart_item_key,
-	   'select'=>$variations,
+       'cart_item_key'=>$cart_item_key,
+       'select'=>$variations,
        'msg'=>'yes'
        );
        echo json_encode($pro);
