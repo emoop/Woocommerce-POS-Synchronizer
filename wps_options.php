@@ -46,11 +46,12 @@
    }
    if($is_isset==true){
      $_ok=update_option('text_field-group',
-	                    array('today_orders_name'=> $_today,
-	                          'search_by_name'=>$_search,
-							  'total_sum_name'=>$_total
-	                          ));
-		 if($_ok==true){ ?>
+	         array('today_orders_name'=> $_today,
+	         'search_by_name'=>$_search,
+		 'total_sum_name'=>$_total
+	          ));
+	          
+	if($_ok==true){ ?>
        <div class="updated">
 	    <p><?php echo 'Options successfully updated. '; ?></p>
        </div>
@@ -61,16 +62,16 @@
 	    <p><?php echo 'Error-Options not updated. '; ?></p>
        </div>
 	   <?php
-     }						  
-		}					  
+      }						  
+     }					  
   /********* refresh ********************/	
-  	if(isset($_POST['refsubmit'])){
-   if(isset($_POST['interval'])){
+  if(isset($_POST['refsubmit'])){
+  	
+    if(isset($_POST['interval'])){
      $_okk=update_option('wps_time_interval',($_POST['interval']*60000));
-	//update_option('wps_refresh','yes');
 	
   }else{
-  //update_option('wps_refresh','no');
+  //do nothing
  }  
 	
     if($_okk==true){ ?>
@@ -137,31 +138,44 @@
 		  <div class="panel-heading "  >
 	       <h5>Refresh settings</h5>
 	      </div>
-		   <div class="panel-body "  >
+		<div class="panel-body "  >
 		  
-			  <input type="checkbox" name="ref_check" id="refcheck" value="0" <?php 
+		<input type="checkbox" name="ref_check" id="refcheck" value="0" 
+		
+			  <?php 
 			  $ref=get_option('wps_refresh');
-			 if($ref=='yes'){
+			  if($ref=='yes'){
 			  echo 'checked'; 
 			  }else{ 
-			  }?>>Enable refresh<br>
-          <div class="divider"></div><div class="divider"></div>
+			   //do nothing
+			  }?>
+			  
+			  >Enable refresh<br>
+              <div class="divider"></div><div class="divider"></div>
 		 <form id="form" method="post" action=""  >
-		    <table>
-			 <tr  valign="top">
-              <th scope="row"><p>Set interval</p></th>
-              <td><input id="_interval" type="number" name="interval" step="0.5" value="<?php 
+		  <table>
+		  <tr  valign="top">
+                    <th scope="row"><p>Set interval</p></th>
+                    <td><input id="_interval" type="number" name="interval" step="0.5" value="
+                    
+                         <?php 
 			  $ti= get_option('wps_time_interval');
 			  $ti=$ti/60000;
 			  echo $ti;
-			  ?>" min="1" max="10" />minutes</td>
-			  <td><input  name="refsubmit" type="submit" class="button button-primary btn-r" value="<?php _e('Save changes','woocommerce')  ?>" /></td>
+			  ?>
+			  
+			  " min="1" max="10" />minutes</td>
+			  <td><input  name="refsubmit" type="submit" class="button button-primary btn-r" value="
+			  
+			  <?php _e('Save changes','woocommerce')  ?>
+			  
+			  " /></td>
 		     </tr>
-			</table>
-			</form>
-		   </div>
-		</div>
-	   </div>
+		</table>
+	     </form>
+	 </div>
+	</div>
+	</div>
 	</div>
 	<!--end refresh row-->
   </div>
