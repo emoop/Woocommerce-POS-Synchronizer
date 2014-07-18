@@ -22,12 +22,12 @@ font-size:13px;
   
    .table-hover>tbody>tr:hover>th {
    color:#ffffff;
-   background-color:#3CD03C;/*#d9534f;*/
+   background-color:#3CD03C;
    }
    
   .tproducts tbody th{
     color:#ffffff;
-    background-color:#3CD03C;/*#d9534f;*/
+    background-color:#3CD03C;
   }
    .tproducts th.del{
    width:4%;
@@ -67,11 +67,11 @@ font-size:13px;
       width:20px;
       text-align:right;
     }
-	.gray{
-	  display:inline;
-	  font-size:11px;
-	  color:silver;
-	}
+.gray{
+  display:inline;
+  font-size:11px;
+  color:silver;
+  }
 
 .select-mini{
  height:25px;
@@ -87,40 +87,42 @@ margin-right:10px;
  font-size:12px;
  width:50px;
   margin-left:-6px;
-/* margin-left:-10px;
- margin-right:10px;*/
  }
+ 
 img[Attributes Style] {
 width: 70px;
 height: 66px;
 }
+
 #o_panel{
 height:200px;
 overflow:auto;
 }
 
 .br{
-      border-bottom:solid #E6E6E6 ;
-border-top:transparent;
-border-left:transparent;
-border-width:1px;
-    }
+ border-bottom:solid #E6E6E6 ;
+ border-top:transparent;
+ border-left:transparent;
+ border-width:1px;
+  }
   .tproducts td #dl{
      opacity:0.4;
     }
-    .tproducts td #dl:hover{
+ .tproducts td #dl:hover{
      opacity:1;
     }
+    
 input[type=number]{
  width:50px;
   margin-left:-6px;
 }
+
 #paid{
-position:fixed;
-display:none;
-margin-right: auto;
-margin-left: 13%;
-top:35%
+ position:fixed;
+ display:none;
+ margin-right: auto;
+ margin-left: 13%;
+ top:35%
 }
 .loading{
  position:fixed;
