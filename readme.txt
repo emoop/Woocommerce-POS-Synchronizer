@@ -1,6 +1,6 @@
 === Woocommerce-POS-Synchronizer ===
 Contributors: emoop
-Tags: woocommerce,pos,synchronization
+Tags: woocommerce-pos-synchronizer,woocommerce,pos,synchronization
 Donate link: https://www.paypal.com/cgi-bin/webscr
 Requires at least: 3.9.1
 Tested up to: 3.9
