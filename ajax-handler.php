@@ -329,7 +329,7 @@ function get_product_by_sku( $sku ) {
 		$orid=$woocommerce->checkout->create_order( );
 		$order = new WC_Order( $orid);
 	    $order->payment_complete();   
-		$wps_order_url=get_bloginfo('url').'/wp-admin/post.php?post='.$orid.'&action=edit';
+		$wps_order_url=admin_url().'post.php?post='.$orid.'&action=edit';
 		 //$_total=wc_format_decimal( $woocommerce->cart->subtotal, get_option( 'woocommerce_price_num_decimals' ) );
 		 update_post_meta( $orid, '_order_total', $woocommerce->cart->subtotal);
 		 update_post_meta($orid,'_customer_user','1');
@@ -363,7 +363,7 @@ function get_product_by_sku( $sku ) {
 		 foreach($oresults as $_oID){
             $_ord=new WC_Order( $_oID->ID);	
 		    $oSum+=$_ord->get_total();
-			$wps_order_url=get_bloginfo('url').'/wp-admin/post.php?post='.$_oID->ID.'&action=edit';
+			$wps_order_url=admin_url().'post.php?post='.$_oID->ID.'&action=edit';
 			$_name=$_ord->post_title;
 			$_row='<tr> 
 		        <td class="td-left"><a href="'.$wps_order_url.'" >'. __('Order','woocommerce').'_#'.$_oID->ID.'('.$_ord->order_date.')</a></td>
