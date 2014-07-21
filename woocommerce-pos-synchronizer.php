@@ -98,7 +98,7 @@ if(!function_exists('wp_get_current_user')) {
 		'refresh'=>$_refresh
 	  );
 	  // Loads Bootstrap minified CSS file.
-     wp_enqueue_style('bootstrapwp', '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', false ,'3.1.1');
+     wp_enqueue_style('bootstrapwp', $dir.'styles/bootstrap.min.css', false ,'3.2.0');
      wp_enqueue_script('jfunc',$dir.'js/wps_functions.js', array(), '1.0.0', true);//jscriptfunc
 	  $_dir=array('dir'=>$dir);
          wp_localize_script('jfunc','exdata',$_extradata);
@@ -107,7 +107,7 @@ if(!function_exists('wp_get_current_user')) {
 		  
 	 }
 	if($wps_screen->id=='woo-pos-sync_page_wps-options'){
-	 wp_enqueue_style('bootstrapwp', '//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css', false ,'3.1.1');
+	 wp_enqueue_style('bootstrapwp', $dir.'styles/bootstrap.min.css', false ,'3.2.0');
 		   wp_enqueue_style( 'mstyle', $dir.'styles/wps_style.css',false, '1.0', 'all'  );
 		   wp_enqueue_script('jopt',$dir.'js/wps_settings.js', array(), '1.0.0', true);
 		   wp_localize_script('jopt','adminajax',array('url'=>admin_url( 'admin-ajax.php' )));
