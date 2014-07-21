@@ -16,7 +16,7 @@ if ( ! in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins',
 		
 //get user role
 if(!function_exists('wp_get_current_user')) {
-    include(ABSPATH . "wp-includes/pluggable.php"); 
+     include(ABSPATH . WPINC."/pluggable.php");
 }
  function _activation(){
 	//set default time interval for refresh
