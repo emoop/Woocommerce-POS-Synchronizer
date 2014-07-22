@@ -77,7 +77,7 @@ if(!function_exists('wp_get_current_user')) {
 	  $current_user = wp_get_current_user();
 	  $roles = $current_user->roles;
       $role = array_shift($roles);
-	  return isset($wp_roles->role_names[$role]);// ? translate_user_role($wp_roles->role_names[$role] ) : false;
+	  return isset($wp_roles->role_names[$role]);
     }
 	//add menu page
 	public function add_woopossync_menu(){
@@ -91,15 +91,14 @@ if(!function_exists('wp_get_current_user')) {
 	if($wps_screen->id=='toplevel_page_pos-sync-page'){
 	  $_interval=get_option('wps_time_interval');
 	  $_refresh=get_option('wps_refresh');
-	 // $dir =plugin_dir_url(__FILE__);
 	  $_extradata=array(
-	    'dir'=>$dir,
+	        'dir'=>$dir,
 		'interval'=>$_interval,
 		'refresh'=>$_refresh
 	  );
 	  // Loads Bootstrap minified CSS file.
      wp_enqueue_style('bootstrapwp', $dir.'styles/bootstrap.min.css', false ,'3.2.0');
-     wp_enqueue_script('jfunc',$dir.'js/wps_functions.js', array(), '1.0.0', true);//jscriptfunc
+     wp_enqueue_script('jfunc',$dir.'js/wps_functions.js', array(), '1.0.0', true);
 	  $_dir=array('dir'=>$dir);
          wp_localize_script('jfunc','exdata',$_extradata);
 		 wp_localize_script('jfunc','adminajax',array('url'=>admin_url( 'admin-ajax.php' )));
