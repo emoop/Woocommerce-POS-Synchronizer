@@ -83,20 +83,19 @@ if(is_object( $woocommerce ) && version_compare( $woocommerce->version, '2.1', '
 		   <div class="panel panel-default _checkout" >
 		  <?php
 		   //date_default_timezone_set('UTC');
-		  	 $d=date('Y-m-d ');
+		   $d=date('Y-m-d ');
 		  
-		          $oresults=$wpdb->get_results(
-		                     "SELECT ID,post_title FROM $wpdb->posts 
-							 WHERE `post_type`='shop_order' 
-							 AND `post_date` LIKE '".$d."%'
-							 AND `post_status`='publish' ORDER BY ID DESC "); 
-			$oSum=0;	
-            $cpos=null;			
-		  if($oresults){					 
-			  	foreach($oresults as $_oID){
-              $_ord=new WC_Order( $_oID->ID);	
-			  			  
-			  $oSum+=$_ord->get_total();
+		   $oresults=$wpdb->get_results(
+		            "SELECT ID,post_title FROM $wpdb->posts 
+				WHERE `post_type`='shop_order' 
+				AND `post_date` LIKE '".$d."%'
+				AND `post_status`='publish' ORDER BY ID DESC "); 
+		 $oSum=0;	
+                 $cpos=null;			
+		 if($oresults){					 
+	   	   foreach($oresults as $_oID){
+                     $_ord=new WC_Order( $_oID->ID);	
+		     $oSum+=$_ord->get_total();
              }		
        $cpos=array('currency' => $_ord->get_order_currency());		 
      }			 
@@ -104,13 +103,15 @@ if(is_object( $woocommerce ) && version_compare( $woocommerce->version, '2.1', '
      <div class="panel-heading phead"  >
 	 <table  class="headtbl">
 	  <th class="head-left"><?php
-	  
+	   $tSum='Total sum';
 	  $val= get_option('text_field-group'); 
         if($val){	  
-	     echo $val['today_orders_name'];
-		 $tSum=$val['total_sum_name'];
+	 echo $val['today_orders_name'];
+         $tSum=$val['total_sum_name'];
        }
-       else	echo 'Today sales' ;  ?></th>
+       else{	
+       echo 'Today sales' ; 
+       } ?></th>
 	  <th class="head-right" id="total_sum" ><?php 
          if($tSum!=null){
 		   echo $tSum;
