@@ -29,8 +29,8 @@ if(!function_exists('wp_get_current_user')) {
   delete_option('wps_refresh');
 	  
 }
-  register_activation_hook( plugin_dir_url(__FILE__), '_activation');
-  register_deactivation_hook( plugin_dir_url(__FILE__) , '_deactivation');
+  register_activation_hook( __FILE__, '_activation');
+  register_deactivation_hook( __FILE__, '_deactivation');
   
    WooPOSSync::on_load();
    
