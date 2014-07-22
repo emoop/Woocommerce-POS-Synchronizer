@@ -156,7 +156,7 @@
 		  <table>
 		  <tr  valign="top">
                     <th scope="row"><p>Set interval</p></th>
-                    <td><input id="_interval" type="number" name="interval" step="0.5" value="
+                    <td><input id="_interval" type="number" name="interval" step="0.5" value=
                     
                          <?php 
 			  $ti= get_option('wps_time_interval');
@@ -164,12 +164,12 @@
 			  echo $ti;
 			  ?>
 			  
-			  " min="1" max="10" />minutes</td>
-			  <td><input  name="refsubmit" type="submit" class="button button-primary btn-r" value="
+			  min="1" max="10" />minutes</td>
+			  <td><input  name="refsubmit" type="submit" class="button button-primary btn-r" value=
 			  
 			  <?php _e('Save changes','woocommerce')  ?>
 			  
-			  " /></td>
+			   /></td>
 		     </tr>
 		</table>
 	     </form>
