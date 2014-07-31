@@ -1,7 +1,7 @@
 <?php
  function wps_options(){ 
- global $wpdb;?>
-  <?php
+ global $wpdb;
+ 
   $_okk=false;
    $options_array=get_option('text_field-group');
    if($options_array){
