@@ -353,7 +353,7 @@ function get_product_by_sku( $sku ) {
 		            "SELECT ID,post_title FROM $wpdb->posts 
 					WHERE `post_type`='shop_order' 
 					AND `post_date` LIKE '".$d."%'
-					AND `post_status`='publish' ORDER BY ID DESC "); 
+					AND `post_status`='wc-complete' ORDER BY ID DESC "); 
 		$oSum=0;	
         $cpos=null;		
 		$wps_order_url='';
