@@ -348,12 +348,17 @@ function get_product_by_sku( $sku ) {
 	 
 	 function wps_refresh(){
 	    global $wpdb;
+	    $woo_post_status='wc-complete';
+		if(version_compare(WOOCOMMERCE_VERSION,"2.2.0")<0)
+		{
+		 $woo_post_status='publish';
+		}
 	    $d=date('Y-m-d ');
 		 $oresults=$wpdb->get_results(
 		            "SELECT ID,post_title FROM $wpdb->posts 
 					WHERE `post_type`='shop_order' 
 					AND `post_date` LIKE '".$d."%'
-					AND `post_status`='wc-complete' ORDER BY ID DESC "); 
+					AND `post_status`=$woo_post_status  ORDER BY ID DESC "); 
 		$oSum=0;	
         $cpos=null;		
 		$wps_order_url='';
