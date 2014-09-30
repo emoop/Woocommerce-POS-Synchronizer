@@ -369,16 +369,16 @@ function get_product_by_sku( $sku ) {
 		if($oresults){					 
 	     foreach($oresults as $_oID){
                  $_ord=new WC_Order( $_oID->ID);
-                 $pos='';
+                $pos='style="text-align:center;"';
                  if(get_post_meta($_oID->ID,'_pos',true)=='pos'){ 
-			 $pos='style="border-radius:4px;padding:3px;color:#fff;background:#ddd;text-align:center;margin-rigth:4px;" ';
+			 $pos='style="border-radius:10px;padding:3px;background:#ddd;text-align:center;" ';
 			}
 		    $oSum+=$_ord->get_total();
 			$wps_order_url=admin_url().'post.php?post='.$_oID->ID.'&action=edit';
 			$_name=$_ord->post_title;
 			$_row='<tr> 
 		        <td class="td-left" '.$pos.' ><a href="'.$wps_order_url.'" >'. __('Order','woocommerce').'_#'.$_oID->ID.'('.$_ord->order_date.')</a></td>
-		        <td class="td-right">'. wc_price($_ord->get_total(),array('currency' => $_ord->get_order_currency())).'</td>
+		        <td class="td-right" '.$pos.' >'. wc_price($_ord->get_total(),array('currency' => $_ord->get_order_currency())).'</td>
 		        </tr>';
 				$trows.=$_row;
            }		
