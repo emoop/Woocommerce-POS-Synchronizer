@@ -57,12 +57,36 @@ if(!function_exists('wp_get_current_user')) {
 	add_action( 'admin_enqueue_scripts',  array(self::instance(),'add_woopossync_scripts') );
 	add_action('wp_ajax_wps_ajax',  array(__CLASS__, 'ajax_request'));
 	add_action('init',  array(__CLASS__,'iwps_empty_cart'));
+	//add custom order column for pos
+	add_filter('manage_edit-shop_order_columns', array(self::instance(),'wps_add_column'),15);
+	add_action( 'manage_shop_order_posts_custom_column', array( self::instance(), 'wps_custom_columns' ) );
 	  //ensure access only for aministrator and shop manager
 	if(self::get_current_user_role()=='Shop_manager'||self::get_current_user_role()=='Administrator'){
 	 include("wps_options.php");
 	 include("wps_sale_page.php");   
       }
     }
+    
+    /*
+    * add column
+    */
+    public function wps_add_column($ex_columns){
+	
+	  $ex_columns['pos']='<span>POS</span>';
+	  return $ex_columns;
+     }
+    
+    /*
+    * populate data in column
+    */
+    public function wps_custom_columns($column){	 
+      global $post;
+      if($column=='pos'){
+	 if(get_post_meta($post->ID,'_pos',true)=='pos'){
+	    echo'<span style="border-radius:3px;padding:4px;color:#fff;background:#f0ad4e;">POS</span>';
+	    }
+	  }
+        }
 	
      /*
      * Empty WooCommerce cart if not
