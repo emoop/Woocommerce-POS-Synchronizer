@@ -362,18 +362,22 @@ function get_product_by_sku( $sku ) {
 					AND `post_date` LIKE '".$d."%'
 					AND `post_status`=$woo_post_status  ORDER BY ID DESC "); 
 		$oSum=0;	
-        $cpos=null;		
+               $cpos=null;		
 		$wps_order_url='';
 		$_name='';
 		$trows='';
 		if($oresults){					 
-		 foreach($oresults as $_oID){
-            $_ord=new WC_Order( $_oID->ID);	
+	     foreach($oresults as $_oID){
+                 $_ord=new WC_Order( $_oID->ID);
+                 $pos='';
+                 if(get_post_meta($_oID->ID,'_pos',true)=='pos'){ 
+			 $pos='style="border-radius:4px;padding:3px;color:#fff;background:#ddd;text-align:center;margin-rigth:4px;" ';
+			}
 		    $oSum+=$_ord->get_total();
 			$wps_order_url=admin_url().'post.php?post='.$_oID->ID.'&action=edit';
 			$_name=$_ord->post_title;
 			$_row='<tr> 
-		        <td class="td-left"><a href="'.$wps_order_url.'" >'. __('Order','woocommerce').'_#'.$_oID->ID.'('.$_ord->order_date.')</a></td>
+		        <td class="td-left" '.$pos.' ><a href="'.$wps_order_url.'" >'. __('Order','woocommerce').'_#'.$_oID->ID.'('.$_ord->order_date.')</a></td>
 		        <td class="td-right">'. wc_price($_ord->get_total(),array('currency' => $_ord->get_order_currency())).'</td>
 		        </tr>';
 				$trows.=$_row;
