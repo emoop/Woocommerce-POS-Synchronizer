@@ -369,7 +369,7 @@ function get_product_by_sku( $sku ) {
 		if($oresults){					 
 	     foreach($oresults as $_oID){
                  $_ord=new WC_Order( $_oID->ID);
-                $pos='style="text-align:center;"';
+                 $pos='style="border-radius:10px;padding:3px;background:#F0F0F0;text-align:center;" ';
                  if(get_post_meta($_oID->ID,'_pos',true)=='pos'){ 
 			 $pos='style="border-radius:10px;padding:3px;background:#ddd;text-align:center;" ';
 			}
