@@ -333,6 +333,8 @@ function get_product_by_sku( $sku ) {
 		 //$_total=wc_format_decimal( $woocommerce->cart->subtotal, get_option( 'woocommerce_price_num_decimals' ) );
 		 update_post_meta( $orid, '_order_total', $woocommerce->cart->subtotal);
 		 update_post_meta($orid,'_customer_user','1');
+		 //add pos metta field
+		 update_post_meta($orid,'_pos','pos');
 		 $order->update_status( 'completed' );
 		 $woocommerce->cart->empty_cart(); 
 		 echo json_encode(
