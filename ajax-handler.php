@@ -355,12 +355,13 @@ function get_product_by_sku( $sku ) {
 		{
 		 $woo_post_status='publish';
 		}
-	    $d=date('Y-m-d ');
+	         $d=date('Y-m-d ');
+	         $d.='%';
 		 $oresults=$wpdb->get_results(
 		            "SELECT ID,post_title FROM $wpdb->posts 
 					WHERE `post_type`='shop_order' 
-					AND `post_date` LIKE '".$d."%'
-					AND `post_status`=$woo_post_status  ORDER BY ID DESC "); 
+					AND `post_date` LIKE '".$d."'
+					AND `post_status`='".$woo_post_status."'  ORDER BY ID DESC "); 
 		$oSum=0;	
                $cpos=null;		
 		$wps_order_url='';
