@@ -132,6 +132,8 @@ input[type=number]{
 }
 .headtbl{
  width:100%;
+ border-collapse:separate; 
+ border-spacing:2px;
 }
 .head-left{
  width:52%;
