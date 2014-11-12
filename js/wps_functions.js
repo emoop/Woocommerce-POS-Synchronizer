@@ -456,6 +456,7 @@ window.onload = function(){
            url: adminajax.url,
            data: pdata,
 		   success: function(responce) {
+		    if(responce._msg=="ok"){	
 		    var ord_table=document.getElementById('order_tbl');
 		    var trow=ord_table.insertRow(0);
 		    var _cell=trow.insertCell(0);
@@ -467,7 +468,13 @@ window.onload = function(){
 		    var paidicon=document.getElementById("paid");
 		    paidicon.style.display="block";
 			refresh();
-		    }
+		    }else{
+		      alert(responce._msg);
+			loader.style.display = "none";
+			aboard.style.opacity=1;	
+		    	
+		    }	
+		}
          });
 	  }
 	  /*
