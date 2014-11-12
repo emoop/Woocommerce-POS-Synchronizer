@@ -325,7 +325,12 @@ function get_product_by_sku( $sku ) {
 		$_name.='_#';
 		$woocommerce->cart->calculate_totals();
 		//$woocommerce->checkout->check_cart_items();
-		
+		//check if quantity is > 0
+		 if($woocommerce->cart->subtotal==0)
+		 {
+		   echo json_encode(array('_msg' =>'Quantity not set!'));
+		   return;
+		 }
 		$orid=$woocommerce->checkout->create_order( );
 		$order = new WC_Order( $orid);
 	    $order->payment_complete();   
