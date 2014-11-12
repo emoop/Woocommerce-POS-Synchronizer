@@ -441,11 +441,11 @@ window.onload = function(){
 	  var aboard=document.getElementById("action_board");
 	  aboard.style.opacity=.2;
 	  var loader=document.getElementById("sale_procces");
-      loader.style.display = "block";
+          loader.style.display = "block";
 	  document.getElementById("subtotal").innerHTML=0;
 	  document.getElementById("taxlabel").innerHTML=0;
 	  document.getElementById("sm").innerHTML=0;
-	  tableClear('tbl');
+	 
 	  var pdata={
 	   'operation':'payment',
 	   'action':'wps_ajax'
@@ -456,7 +456,9 @@ window.onload = function(){
            url: adminajax.url,
            data: pdata,
 		   success: function(responce) {
-		    if(responce._msg=="ok"){	
+		   	
+		    if(responce._msg=="ok"){
+		     tableClear('tbl');	
 		    var ord_table=document.getElementById('order_tbl');
 		    var trow=ord_table.insertRow(0);
 		    var _cell=trow.insertCell(0);
