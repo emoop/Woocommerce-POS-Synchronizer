@@ -356,7 +356,7 @@ function get_product_by_sku( $sku ) {
 	 
 	 function wps_refresh(){
 	    global $wpdb;
-	    $woo_post_status='wc-complete';
+	    $woo_post_status='wc-completed';
 		if(version_compare(WOOCOMMERCE_VERSION,"2.2.0")<0)
 		{
 		 $woo_post_status='publish';
