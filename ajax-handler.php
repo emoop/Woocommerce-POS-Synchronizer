@@ -348,7 +348,8 @@ function get_product_by_sku( $sku ) {
 		  'order_id'=>$orid,
 		  'total'=>wc_price( $order->get_total()),
 		  'wps_order_url'=>$wps_order_url,
-		  'order_date'=>$order->order_date
+		  'order_date'=>$order->order_date,
+		  '_msg' => 'ok'
 		 ));
 		remove_action('woocommerce_email', 'unhook_those_pesky_emails'); 
 	 }
